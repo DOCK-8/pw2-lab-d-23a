@@ -28,3 +28,4 @@
                                                                                                                   width: 250px;
                                                                                                           }
                                                                                                           select:focus{ outline: none;}
+/* Extraido de http://w3.unpocodetodo.info/css3/select.php*/
