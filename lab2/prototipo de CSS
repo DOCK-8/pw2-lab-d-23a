@@ -1,0 +1,30 @@
+.caja{border: 0.5px solid;
+          border-radius: 3px;
+        margin:20px auto 40px auto;
+              height:30px;
+                 overflow: hidden;
+                    width: 230px;
+                       position:relative;
+}
+.caja::after{
+                content:"\025be";
+                        display:table-cell;
+                                padding-top:7px;
+                                        text-align:center;
+                                                width:30px;
+                                                        height:30px;
+                                                                background-color:#df0000;
+                                                                        position:absolute;
+                                                                                top:0;
+                                                                                        right:0px;
+                                                                                                pointer-events: none;
+                                                                                        }
+                                                                                        select {
+                                                                                                   background: transparent;
+                                                                                                      border: none;
+                                                                                                         font-size: 14px;
+                                                                                                            height: 30px;
+                                                                                                               padding: 5px;
+                                                                                                                  width: 250px;
+                                                                                                          }
+                                                                                                          select:focus{ outline: none;}
