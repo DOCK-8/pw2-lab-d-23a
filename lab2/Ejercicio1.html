@@ -11,27 +11,39 @@
 	  <div class="general">
     <table class="tabla">
       <tr>
-      <td id="tabla"><label>Seleccione:</label></td>
-      <th colspan="2" id="i"><input id="input" type="text"></th>
+	      <td id="tabla"><div id="izq"><label>Seleccione:</label></div></td>
+      <th colspan="2">
+	      <select id="input">
+		      <option>3</option>
+		      <option>1</option>
+		      <option>2</option>
+		      </select>
+      </th>
       </tr>
       <tr>
-        <td id="tabla"><label> Numero de tarjeta:</label></td>
-        <th colspan="2" id="i"><input id="input" type="number"></th>
+	      <td id="tabla"><div id="izq"><label> Numero de tarjeta:</label></div></td>
+	<th colspan="2" id="i"><input id="input" type="number"></th>
       </tr>
       <tr>
-        <td id="tabla"><label> Tipo y NÂ° Documento:</label></td>
+	      <td id="tabla"><div id="izq"><label> Tipo y NÂ° Documento:</label></div></td>
+        <td>	
+	      <select id="medio">
+		      <option>3</option>
+		      <option>1</option>
+		      <option>2</option>
+		      </select>
+	</td>
         <td><input id="medio" type="number"></td>
-        <td><input id="medio" type="number"></td>
       </tr>
       <tr>
-        <td><label>Ingresa tu clave usando el teclado virtual:</label></td>
+	      <td width="160px"><label>Ingresa tu clave usando el teclado virtual:</label></td>
         <td>
           <table>
             <tr>
               <td><input id="button" type="button" value="1"></td>
               <td><input id="button" type="button" value="2"></td>
               <td><input id="button" type="button" value="3"></td>
-            </tr>
+            </tr>	
             <tr>
               <td><input id="button" type="button" value="4"></td>
               <td><input id="button" type="button" value="5"></td>
@@ -49,7 +61,7 @@
           </table>
         </td>
         <td><a href="">Genera tu Clave de internet</a>
-          <br><label>Ingresa tu clave de Internet(06 digitos)</label>
+		<br><div style="width:150px">Ingresa tu clave de Internet(06 digitos)</div>
           <br><input id="medio" type="number">
           <br>
           <img href="">
@@ -57,7 +69,7 @@
         </td>
       </tr>
       <tr>
-        <td><label>Ingresa el texto de la imagen:</label></td>
+	      <td><div id="izq"><label>Ingresa el texto de la imagen:</label></div></td>
         <td>
           <img href="">
           <img href="">

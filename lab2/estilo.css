@@ -1,24 +1,26 @@
 #input{
   border: 0.5px solid;
   border-radius: 3px;
-  width: 210px;
+  width: 212px;
+  display:flex;
 }
 #form_general{
   text-align: center;
 }
-#general{
-  /*text-align: center;*/
+.general{
+  display:flex;
+  justify-content: center;
 }
 #tabla{
-  /*text-align: right;*/
+	text-align:right;
+}
+.tabla{
+border:2px solid black;
 }
 #medio{
   border: 0.5px solid;
   border-radius: 3px;
  width: 100px;
-}
-#i{
-  /*text-align:left;*/
 }
 #button{
   border: 0.5px solid;
@@ -32,11 +34,8 @@
   height: 31px;
   width: 65px;
 }
-.general{
-	display;:grid;
-	place-content: center;
-}
-.tabla{
-	border:1px solid black;
-}
-
+/*#izq{
+	border: 2px solid black;
+	display:flex;
+	justify-content:flex-end;
+}*/
