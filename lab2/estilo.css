@@ -1,8 +1,30 @@
 #input{
   border: 0.5px solid;
   border-radius: 3px;
-  width: 212px;
+  width: 217px;
   display:flex;
+}
+#number{
+  border: 0.5px solid;
+  border-radius: 3px;
+  width: 211px;
+  display:flex;
+}
+select{
+	-moz-appearance:none;
+	outline: none;
+}
+.select {
+	border:2px solid black;
+	width:100px;
+	display:flex;
+	background: fffffff;
+}
+select::-ms-expand{
+	display:none;
+}
+.select::after {
+	content: '\25BC';
 }
 #form_general{
   text-align: center;
