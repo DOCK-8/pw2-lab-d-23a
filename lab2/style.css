@@ -1,0 +1,43 @@
+
+#general{
+	display:flex;
+	flex-flow:column;
+	justify-content: center;
+	width:0%;
+	margin: 0 auto;
+	align-cont
+}
+.center{
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width:50%;
+	margin: 0 auto;
+	align-content: center;
+}
+.ginput1{
+	width:269px;
+}
+
+.ginput2{
+	width:40%;
+}
+.input{
+width:20%
+}
+#label{
+	text-align:right;
+	width:123px;
+}
+.centro{
+	display:flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	width:40%;
+	margin: 0 auto;
+	align-content: space-between;
+}
+.c1{
+	width:30%;
+	text-align:right;
+}

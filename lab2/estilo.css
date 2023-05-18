@@ -3,11 +3,14 @@
   border-radius: 3px;
   width: 210px;
 }
-#general{
+#form_general{
   text-align: center;
 }
+#general{
+  /*text-align: center;*/
+}
 #tabla{
-  text-align: right;
+  /*text-align: right;*/
 }
 #medio{
   border: 0.5px solid;
@@ -15,7 +18,7 @@
  width: 100px;
 }
 #i{
-  text-align:left
+  /*text-align:left;*/
 }
 #button{
   border: 0.5px solid;
@@ -29,3 +32,11 @@
   height: 31px;
   width: 65px;
 }
+.general{
+	display;:grid;
+	place-content: center;
+}
+.tabla{
+	border:1px solid black;
+}
+
