@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
-	<head></head>
+	<head>
+		<script src="funcion.js"></script>
+		<link rel="stylesheet" href="style.css">
+	</head>
 	<body>
-		<div>
+		<div id="arriba">
 			<input type="button" value="Undo">
 			<select >
 				<option>basic</option>
 				<option>neutral</option>
 				<option>cientify</option>
 				</select>
-				<div>
+				<div id="option">
 			<input type="button" value="x">
 			<input type="button" value="()">
 			<input type="button" value="-">
 				</div>
 		</div>
-		<div></div>
-		<div></div>
+		<div id="memoria"></div>
+		<div id="pantalla"></div>
 		<div>
-			<input type="button" value="1" id="1">
+			<input type="button" onclick="Ingreso("1")" value="1">
 			<input type="button" value="2" id="2">
 			<input type="button" value="3" id="3">
 			<input type="button" value="4" id="4">

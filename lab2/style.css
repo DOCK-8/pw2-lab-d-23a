@@ -1,79 +1,21 @@
-
-#general{
+#arriba{
 	display:flex;
-	flex-flow:column;
-	justify-content: center;
-	width:0%;
-	margin: 0 auto;
-	align-cont
+	justify-content:space-around;
 }
-.center{
+#option{
+	width: 10%;
 	display:flex;
-	flex-flow: row wrap;
-	justify-content: center;
-	width:50%;
-	margin: 0 auto;
-	align-content: center;
+	justify-content:space-around;
 }
-.ginput1{
-	width:269px;
-}
-
-.ginput2{
-	width:40%;
-}
-.input{
-width:20%
-}
-#label{
-	text-align:right;
-	width:123px;
-}
-.centro{
-	
-	border:2px solid black;
-
-	border:2px solid red;
+#memoria{
+	border:1px solid black;
+	height: 40px;
 	display:flex;
-	flex-flow: row wrap;
-	justify-content:center;
-	width:42%;
-	margin: 0 auto;
-	align-content: space-between;
+	justify-content:flex-end;
 }
-.c1{
-	width:30%;
-	text-align:right;
-}
-.c{
-
-	border:2px solid black;
+#pantalla{
+	border:1px solid black;
+	height: 40px;
 	display:flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	width:40%;
-	margin: 0 auto;
-	align-content: space-between;
-
-}
-.input1{
-	flex-basis:20%;
-}
-.input2{
-	width:20%;
-}
-#a{
-	border:2px solid black;
-	text-align:right;
-	width:200px;
-}
-.m{
-
-	border:2px solid black;
-	display:flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-	width:50%;
-	margin: 0 auto;
-	align-content: space-between;
+	justify-content:flex-end;
 }
