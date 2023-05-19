@@ -1,6 +1,8 @@
 #arriba{
 	display:flex;
 	justify-content:space-around;
+  width:15%;
+  margin:0 auto;
 }
 #option{
 	width: 10%;
@@ -8,14 +10,51 @@
 	justify-content:space-around;
 }
 #memoria{
+  font color:#ffffff;
 	border:1px solid black;
 	height: 40px;
 	display:flex;
 	justify-content:flex-end;
+  width:15%;
+  margin:0 auto;
+  background:#a8adac;
 }
 #pantalla{
 	border:1px solid black;
 	height: 40px;
+  justify-content: center;
+  align-content:center;
+  flex-flow: row wrap;
 	display:flex;
-	justify-content:flex-end;
+  width:15%;
+  margin:0 auto;
+}
+#teclado{
+  display:flex;
+  justify-content: center;
+  align-content:center;
+  flex-flow: row wrap;
+    width:15%;
+  height:300px;
+  margin:0 auto;
+}
+.button{
+  border: 0.5px solid;
+  border-radius: 3px;
+  width: 50px;
+  height: 50px;
+}
+#igual{
+  border: 0.5px solid;
+  border-radius: 3px;
+  width: 100px;
+  height: 50px;
+  background: #1bcc5c;
+}
+#borrar{
+   border: 0.5px solid;
+  border-radius: 3px;
+  width: 50px;
+  height: 50px;
+  background: #cc1b1b;
 }
