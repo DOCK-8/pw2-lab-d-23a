@@ -56,8 +56,7 @@ border:2px solid black;
   height: 31px;
   width: 65px;
 }
-/*#izq{
-	border: 2px solid black;
-	display:flex;
-	justify-content:flex-end;
-}*/
+#link{
+display: flex;
+align-content: center;
+}
