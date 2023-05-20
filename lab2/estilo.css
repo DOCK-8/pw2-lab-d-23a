@@ -63,3 +63,8 @@ align-content: center;
 display: flex;
 align-content:center;
 }
+#contra{
+    border: 0.5px solid;
+  border-radius: 3px;
+ width: 100px;
+}
