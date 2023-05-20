@@ -6,17 +6,16 @@
     <meta charset="UTF-8">
   </head>
 
-  <body>
-	 <div class="general">
+  <body><div class="general">
     <table class="tabla">
       <tr>
 	      <td id="tabla"><div id="izq"><label>Seleccione:</label></div></td>
       <th colspan="2">
 	      <div class="select1">
 	      <select id="input">
-		      <option>3</option>
-		      <option>1</option>
-		      <option>2</option>
+		      <option>Multired Global Debito</option>
+		      <option>Multired Country Debito</option>
+		      <option>Multired Center Debito</option>
 		      </select>
       </th>
       </tr>
@@ -25,13 +24,13 @@
 	<th colspan="2" id="i"><input id="number" type="number"></th>
       </tr>
       <tr>
-	      <td id="tabla"><div id="izq"><label> Tipo y NÂ° Documento:</label></div></td>
+	      <td id="tabla"><div id="izq"><label> Tipo y Nº Documento:</label></div></td>
         <td>	
 		<div class="select">
 	      <select id="medio">
-		      <option>3</option>
-		      <option>1</option>
-		      <option>2</option>
+		      <option>DNI</option>
+		      <option>Pasaporte</option>
+		      <option>Carnet de Extranjeria</option>
 		      </select>
 		      </div>
 	</td>
@@ -42,23 +41,23 @@
         <td>
           <table>
             <tr>
-              <td><input id="button" type="button" onclick="Ingreso(1)" value="1"></td>
-              <td><input id="button" type="button" onclick="Ingreso(2)" value="2"></td>
-              <td><input id="button" type="button" onclick="Ingreso(3)" value="3"></td>
+              <td><input class="button" id="uno" type="button" onclick="Ingreso('uno')"></td>
+              <td><input class="button" id="dos" type="button" onclick="Ingreso('dos')"></td>
+              <td><input class="button" id="tres" type="button" onclick="Ingreso('tres')"></td>
             </tr>	
             <tr>
-              <td><input id="button" type="button" onclick="Ingreso(4)" value="4"></td>
-              <td><input id="button" type="button" onclick="Ingreso(5)" value="5"></td>
-              <td><input id="button" type="button" onclick="Ingreso(6)" value="6"></td>
+              <td><input class="button" id="cuatro" type="button" onclick="Ingreso('cuatro')"></td>
+              <td><input class="button" id="cinco" type="button" onclick="Ingreso('cinco')"></td>
+              <td><input class="button" id="seis" type="button" onclick="Ingreso('seis')"></td>
             </tr>
             <tr>
-              <td><input id="button" type="button" onclick="Ingreso(7)" value="7"></td>
-              <td><input id="button" type="button" onclick="Ingreso(8)" value="8"></td>
-              <td><input id="button" type="button" onclick="Ingreso(9)" value="9"></td>
+              <td><input class="button" id="siete" type="button" onclick="Ingreso('siete')"></td>
+              <td><input class="button" id="ocho" type="button" onclick="Ingreso('ocho')"></td>
+              <td><input class="button" id="nueve" type="button" onclick="Ingreso('nueve')"></td>
             </tr>
             <tr>
-              <td><input id="button" type="button" onclick="Ingreso(0)" value="0"></td>
-              <th colspan=2><input id="limpiar" type="button" value="limpiar" ></th>
+              <td><input class="button" id="cero" type="button" onclick="Ingreso('cero')"></td>
+              <th colspan=2><input id="limpiar" type="button" onclick="Limpiar()" value="limpiar" ></th>
             </tr>
           </table>
         </td>
@@ -68,7 +67,9 @@
 			<a href="">Genera tu Clave de internet</a>
 		</div>
 		<br><div style="width:150px">Ingresa tu clave de Internet(06 digitos)</div>
-          <br><input id="contra" type="number">
+          <br>
+    <!--input id="contra" type="password" readonly-->
+    <input id="contra" type="text" readonly>
           <br>
 	  <div id="link">
           <img src="rojo.png" width="25" height="25">
