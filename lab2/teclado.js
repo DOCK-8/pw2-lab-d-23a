@@ -1,3 +1,6 @@
-#!/usr/bin/env node
-let arr =[1,2,3];
-console.log(eval(arr));
+function Ingreso(caracter){
+document.getElementById("contra").value+=caracter;
+}
+function Limpiar(){
+  document.getElementById("contra").value;
+}
