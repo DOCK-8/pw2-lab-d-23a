@@ -1,7 +1,16 @@
 const express=require('express')
 const app= express()
 const path=require('path')
- 
+const fs=require('fs')
+function conteo(caracter){
+let nombre='./'+caracter;
+fs.readdir(nombre,(error,elementos)=>{
+	if(error){
+		throw error
+}
+console.log(elementos)
+})
+}
 app.get('/',(req,res)=>{
 res.sendFile(path.resolve(__dirname, 'index.html'))
 })
