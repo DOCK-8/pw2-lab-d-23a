@@ -20,4 +20,9 @@ console.log("Escuchando en: http://localhost:3000")
 })
 
 app.use(express.static(__dirname))
-
+function prueba(){
+let a =document.getElementById('agenda')
+	app.sendFile((req,res)=>{
+	res.sendFile(path.resolve(__dirname, 'index.html'))
+	})
+}
