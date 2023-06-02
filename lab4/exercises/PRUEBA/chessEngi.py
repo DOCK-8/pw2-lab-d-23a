@@ -29,13 +29,13 @@ class movi ():
     filesToCols = {"a":0,"b":1,"c":2,"d":3,"e":4,"f":5,"g":6,"h":7}
     colsToFiles = {v: k for k, v in filesToCols.items()}
     
-    def __ini__(self, startSq, endSq, tab):
-        self.startRow = startSq[0]
-        self.startCol = startSq[1]
-        self.endRow = endSq[0]
-        self.endCol = endSq[1]
-        self.pieceMoved = tab[self.startRow][self.startCol]
-        self.pieceCaptured = tab[self.endRow][self.endCol]
+    def __init__(self, startSq, endSq, tabl):
+        self.startRow = int(startSq[0])
+        self.startCol = int(startSq[1])
+        self.endRow = int(endSq[0])
+        self.endCol = int(endSq[1])
+        self.pieceMoved = tabl[self.startRow][self.startCol]
+        self.pieceCaptured = tabl[self.endRow][self.endCol]
     
     def getChessNotation(self):
         return self.getRankFile(self.startRow,self.startCol) + self.getRankFile(self.endRow,self.endCol)

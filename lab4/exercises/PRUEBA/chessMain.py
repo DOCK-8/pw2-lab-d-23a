@@ -29,17 +29,21 @@ def main():
             if e.type == p.QUIT:
                 run = False
             elif e.type == p.MOUSEBUTTONDOWN:
-                location=p.mouse.get_pos
-                col=location[0]//SQ_SIZE
-                row=location[1]//SQ_SIZE
+                location=p.mouse.get_pos()
+                col=location[0] //SQ_SIZE
+                row=location[1] //SQ_SIZE
                 if sqSelectd == (row,col):
                     sqSelectd = ()
                     playerClicks = []
                 else:
-                    sqSelectd(row,col)
+                    sqSelectd = (row,col)
                     playerClicks.append(sqSelectd)
                 if len(playerClicks) == 2:
-                    
+                    move = chessEngi.movi(playerClicks[0], playerClicks[1],gs.tab)
+                    print(move.getChessNotation())
+                    gs.makeMove(move)
+                    sqSelected = ()
+                    playerClicks = []
         clock.tick(MAX_FPS)
         p.display.flip()
         grafic(screen,gs)
