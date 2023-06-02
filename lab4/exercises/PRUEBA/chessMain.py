@@ -22,10 +22,24 @@ def main():
     gs = chessEngi.game()
     loadImages()
     run = True
+    sqSelectd = ()
+    playerClicks=[]
     while run:
         for e in p.event.get():
             if e.type == p.QUIT:
                 run = False
+            elif e.type == p.MOUSEBUTTONDOWN:
+                location=p.mouse.get_pos
+                col=location[0]//SQ_SIZE
+                row=location[1]//SQ_SIZE
+                if sqSelectd == (row,col):
+                    sqSelectd = ()
+                    playerClicks = []
+                else:
+                    sqSelectd(row,col)
+                    playerClicks.append(sqSelectd)
+                if len(playerClicks) == 2:
+                    
         clock.tick(MAX_FPS)
         p.display.flip()
         grafic(screen,gs)
