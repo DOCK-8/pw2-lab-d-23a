@@ -1,21 +1,21 @@
 from interpreter import draw
 from chessPictures import *
 def impar ():
-    an=square.negative()
-    for i in range (1,8):
-        if i%2==0 and i!=1:
-            an=square.negative().join(an)
+    fila_impar=square.negative()
+    for columna in range (1,8):
+        if columna%2==0 and columna!=1:
+            fila_impar=square.negative().join(fila_impar)
         else:
-            an=square.join(an)
-    return an
+            fila_impar=square.join(fila_impar)
+    return fila_impar
 def par ():
-    a=square
-    for i in range (1,8):
-        if i%2==0 and i!=1:
-            a=square.join(a)
+    fila_par=square
+    for fila in range (1,8):
+        if fila%2==0 and fila!=1:
+            fila_par=square.join(fila_par)
         else:
-            a=square.negative().join(a)
-    return a
+            fila_par=square.negative().join(fila_par)
+    return fila_par
 def peones():
     return pawn.horizontalRepeat(8)
 def fichas():
