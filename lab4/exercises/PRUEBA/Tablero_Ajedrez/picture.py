@@ -48,7 +48,16 @@ class Picture:
   def under(self, p):
     """ Devuelve una nueva figura poniendo la figura p sobre la
         figura actual """
-    return Picture(None)
+    new=[]
+    for (linea1,linea2) in zip(range(len(p.img)),range(len(self.img))):
+        lineas=""
+        for (pixel1,pixel2) in zip(p.img[linea1],self.img[linea2]):
+            if pixel1==" ":
+                lineas+=pixel2
+            else:
+                lineas+=pixel1
+        new.append(lineas)
+    return Picture(new)
   
   def horizontalRepeat(self, n):
     """ Devuelve una nueva figura repitiendo la figura actual al costado
@@ -59,7 +68,9 @@ class Picture:
     return Picture(repeticion)
 
   def verticalRepeat(self, n):
-    return Picture(None)
+    repeticion=[]
+    repeticion+=self.img*int(n)
+    return Picture(repeticion)
 
   #Extra: Sólo para realmente viciosos 
   def rotate(self):
