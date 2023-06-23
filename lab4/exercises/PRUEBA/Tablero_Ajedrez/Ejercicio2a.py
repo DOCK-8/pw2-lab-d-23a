@@ -1,0 +1,3 @@
+from interpreter import draw
+from chessPictures import *
+draw(knight.negative().up(knight).join(knight.up(knight.negative())))
