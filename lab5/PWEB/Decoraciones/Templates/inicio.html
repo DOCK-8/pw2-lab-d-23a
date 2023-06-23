@@ -28,8 +28,14 @@
                 <li><a href="/Decoraciones/Decoraciones">Decoraciones</a></li>
                 <li><a href="/Decoraciones/Contrato/">Contrato</a></li>
             </ul>
-       {% block content %}
-            {% endblock%}
+            <div class="zoom" id="zoom">
+                <img src="{% static 'Decoracions/style/pr.jpg' %}" id="zImagen">
+                <span onclick="cerrar()">X</span>
+            </div>
+            <div id="galeria">
+                {% block content %}
+                {% endblock%}
+            </div>
        </div>
        <div>
        </div>
@@ -58,5 +64,6 @@
                 </div>
             </div>
         </footer>
+        <script src="{% static 'Decoracions/js/index.js' %}"></script>
 </body>
 </html>
