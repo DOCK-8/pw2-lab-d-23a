@@ -1,9 +1,10 @@
 from django.shortcuts import render
-
+from Decoraciones.models import Producto
 # Create your views here.
 #Pagina de Inicio
 def Home(request):
-    return render(request,"home.html")
+    list_producto=Producto.objects.all()
+    return render(request,"home.html",{"producs":list_producto})
 def Bebidas(request):
     return render(request,"Bbs.html")
 def Bocaditos(request):

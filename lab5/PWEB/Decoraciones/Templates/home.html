@@ -7,7 +7,7 @@ HOME
 DECORACIONES </br> BUFFET
 {% endblock%}
 {% block content %}
-<img src="{% static 'Decoracions/style/nombre.png' %}" onclick="Open(this.src)">
-<img src="{% static 'Decoracions/style/pr.jpg' %}" onclick="Open(this.src)">
-<img src="{% static 'Decoracions/style/nu.jpg' %}" onclick="Open(this.src)">
+{% for producto in producs %}
+<img src="{{producto.imagen.url}}" alt="{{producto.nombre}}" onclick="Open('{{producto.imagen.url}}','{{producto.nombre}}','{{producto.descripcion}}','{{producto.precio}}')">
+{% endfor %}
 {% endblock  %}

@@ -5,10 +5,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap" rel="stylesheet">  
     <link rel="stylesheet" href="{% static 'Decoracions/style/style.css' %}">
-    <!--link rel="stylesheet" href="../static/Decoracions/style/style.css"-->
-    <!--Iconos-->
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +28,13 @@
                 <li><a href="/Decoraciones/Contrato/">Contrato</a></li>
             </ul>
             <div class="zoom" id="zoom">
-                <img src="{% static 'Decoracions/style/pr.jpg' %}" id="zImagen">
+                <img src="" id="zImagen">
+                <div class="at" id="at">
+                    <p id="nombre"></p>
+                    <p id="descripcion"></p>
+                    <p id="precio"></p>
+                    <button id="compra" onclick="">Agregar Comprar</button>
+                </div>
                 <span onclick="cerrar()">X</span>
             </div>
             <div id="galeria">
