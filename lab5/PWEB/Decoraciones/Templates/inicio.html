@@ -14,36 +14,37 @@
     <title> ALILEO{% block title %} {% endblock %}</title>
 </head>
 <body>
-        <div class="cabecera"> 
+        <header> 
             <h2>
                 {% block sub %}{% endblock%}
             </h2>
-        </br>
+        </header> 
+        <nav>
             <ul id="barra">
-                <li><a href="/Decoraciones/home/">Home</a></li>
-                <li><a href="/Decoraciones/Bebidas/">Bebidas</a></li>
-                <li><a href="/Decoraciones/Bocaditos/">Bocaditos</a></li>
-                <li><a href="/Decoraciones/Equipos/">Equipos</a></li>
-                <li><a href="/Decoraciones/Decoraciones">Decoraciones</a></li>
-                <li><a href="/Decoraciones/Contrato/">Contrato</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/Bebidas/">Bebidas</a></li>
+                <li><a href="/Bocaditos/">Bocaditos</a></li>
+                <li><a href="/Equipos/">Equipos</a></li>
+                <li><a href="/Decoraciones/">Decoraciones</a></li>
+                <li><a href="/Contrato/">Contrato</a></li>
             </ul>
-            <div class="zoom" id="zoom">
+        </nav>
+        <main>
+            <section class="zoom" id="zoom">
                 <img src="" id="zImagen">
                 <div class="at" id="at">
                     <p id="nombre"></p>
                     <p id="descripcion"></p>
                     <p id="precio"></p>
-                    <button id="compra" onclick="">Agregar Comprar</button>
+                    <button id="compra" onclick="">AGREGAR ARTICULO</button>
                 </div>
                 <span onclick="cerrar()">X</span>
-            </div>
-            <div id="galeria">
+            </section>
+            <section id="galeria">
                 {% block content %}
                 {% endblock%}
-            </div>
-       </div>
-       <div>
-       </div>
+            </section>
+        </main>
         <footer class="pie-pagina">
             <div class="grupo-1">
                 <div class="box">

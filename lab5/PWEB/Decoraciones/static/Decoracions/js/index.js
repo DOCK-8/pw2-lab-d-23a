@@ -12,7 +12,7 @@ function cerrar(){
 function Open(ubi,nombre,des,precio){
     Img.src = ubi
     Img_N.textContent = nombre
-    Img_D.textContent = des
+    Img_D.innerHTML = des
     Img_P.textContent = 'S/.' + precio
     imgzoom.style.display="flex";
 }

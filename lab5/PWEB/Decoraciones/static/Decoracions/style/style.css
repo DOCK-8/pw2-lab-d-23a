@@ -79,7 +79,7 @@ footer{
         padding: 35px 0px;
     }
 }
-.cabecera{
+header{
     background-color: rgba(0, 0, 0, 0.295);
     text-align: center;
     flex-direction: column;
@@ -120,7 +120,8 @@ h2{
     gap: 30px;
 }
 #galeria img{
-    width: 100%;
+    width: 75%;
+    height: 75%;
     cursor: pointer;
     transition: 1s;
 }
@@ -132,9 +133,10 @@ h2{
 }
 .at{
 display: flex;
+align-items: center;
 align-content: center;
 justify-content: center;
-background-color: #ffffffb2;
+background-color: #21444bb2;
 flex-direction: column;
 }
 .at p{
@@ -147,18 +149,19 @@ flex-direction: column;
     background-color: rgba(0, 0, 1, 0.767);
     left: 0;
     top:0;
-    position: absolute;
+    position: fixed;
     display: none;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    align-content: center;
     z-index: 99;
 }
 .zoom img{
     width: 100%;
-    max-width: 500px ;
+    max-width: 50% ;
     height: 100%;
-    max-height: 300px;
+    max-height: 200%;
+    margin-right: 40px;
 }
 .zoom span{
     top: 5%;
@@ -167,4 +170,9 @@ flex-direction: column;
     font-size: 30px;
     color: #fff;
     cursor: pointer;
+}
+button{
+    border: 0;
+    color: rgb(0, 24, 59);
+    font-family: 'PT Sans', sans-serif;
 }
