@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from Usuario.forms import Registro
 
 # Create your views here.
 
@@ -21,3 +23,16 @@ def login_U(request):
 def logout_U(request):
     logout(request)
     return redirect('Login')
+def regist_U(request):
+    if request.method == "POST":
+        form = Registro(request.POST)
+        if form.is_valid():
+            form.save()
+            nombreN = form.cleaned_data['username']
+            passN = form.cleaned_data['password1']
+            usuarioA = authenticate(username=nombreN,password = passN)
+            login(request,usuarioA)
+            return redirect('Inicio')
+    else:
+        form=Registro()
+    return render(request, 'registro.html',{"formulario":form})
