@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" />
     <link rel="stylesheet" href="{% static 'Decoracions/style/style.css' %}">
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
@@ -26,7 +27,18 @@
                 <li><a href="/Bocaditos/">Bocaditos</a></li>
                 <li><a href="/Equipos/">Equipos</a></li>
                 <li><a href="/Decoraciones/">Decoraciones</a></li>
-                <li><a href="/Contrato/">Contrato</a></li>
+                {% if not user.is_authenticated %}
+                <li><a href="/Usuario/Ingreso/">Acceder</a></li>
+                    {% if user.is_superuser %}
+                        <li><a href="/admin/"><i class="fas fa-user"></i>-ADMINISTRAR</a></li>
+                        <li><a href="/admin/"><i class="fas fa-shopping-cart"></i>PEDIDOS</a></li>
+                        <li><a href="/Usuario/salida/"><i class="fas fa-power-off"></i></a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="/Perfil/"><i class="fas fa-user"></i>U</a></li>
+                        <li><a href="/Contrato/">Contrato</a></li>
+                        <li><a href="/Usuario/salida/"><i class="fas fa-power-off"></i></a></li>
+                    {% endif %}
+                {% endif %}
             </ul>
         </nav>
         <main>
