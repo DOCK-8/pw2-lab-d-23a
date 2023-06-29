@@ -4,4 +4,5 @@ urlpatterns = [
     path('Ingreso/', views.login_U, name="Login"),
     path('salida/', views.logout_U, name="Logout"),
     path('registro/', views.regist_U, name="Registro"),
+    path('cotizacion/', views.Proforma, name="contrato")
 ]

@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from Decoraciones.models import Producto
-from django.contrib.auth.views import LoginView,LogoutView
 # Create your views here.
 #Pagina de Inicio
 def Home(request):

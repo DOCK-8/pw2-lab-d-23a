@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-from Usuario.forms import Registro
-
+from Usuario.forms import Registro,Pedidos
+from Decoraciones.models import Producto
 # Create your views here.
+
+#Lista de productos.
+List_prod=Producto.objects.all()
 
 def login_U(request):
     if request.method == "POST" :
@@ -36,3 +38,11 @@ def regist_U(request):
     else:
         form=Registro()
     return render(request, 'registro.html',{"formulario":form})
+def Proforma(request):
+    if request.method == "POST":
+        contrato = Pedidos(request.POST)
+        if contrato.is_valid():
+            contrato.save()
+    else:
+        contrato=Pedidos()
+    return render(request, 'Proforma.html',{"Ped":contrato,"productos":List_prod})

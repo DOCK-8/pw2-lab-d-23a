@@ -180,3 +180,14 @@ button{
     color: rgb(0, 24, 59);
     font-family: 'PT Sans', sans-serif;
 }
+#caracteristicas{
+    background-color: #00aeff9c;
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#contraste{
+    background-color: black;
+}
