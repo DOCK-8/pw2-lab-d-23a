@@ -6,15 +6,6 @@ class Tipo(models.Model):
     def __str__(self):
         return self.Tip
     
-
-class Pedido(models.Model):
-    NombreC = models.CharField(null=True, max_length=50)
-    ApellidosC = models.CharField(null=True, max_length=50)
-    telefono = models.IntegerField(null=True)
-    Correo = models.EmailField(max_length=254, default='')
-    direccion = models.CharField(max_length=50)
-    fecha = models.DateField()
-
 class Producto(models.Model):
     nombre = models.CharField(max_length=25)
     descripcion = models.TextField()
@@ -29,11 +20,16 @@ class catalogo(Producto):
 
     def __str__(self):
         return self.nombre
-    
-
-class Lista(Producto):
-    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, null=True)
 
 class Carrito(Producto):
     adquirido = models.BooleanField()
     rutaI = models.CharField(null=True, max_length=50000)
+    
+class Pedido(models.Model):
+    NombreC = models.CharField(null=True, max_length=50)
+    ApellidosC = models.CharField(null=True, max_length=50)
+    telefono = models.IntegerField(null=True)
+    Correo = models.EmailField(max_length=254, default='')
+    direccion = models.CharField(max_length=50)
+    fecha = models.DateField()
+    Carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null=True)

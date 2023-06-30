@@ -13,11 +13,11 @@ class Registro(UserCreationForm):
         fields = ('username','first_name','last_name','email','password1','password2')
 
 class Pedidos(forms.ModelForm):
-    fecha = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
 
     class Meta:
         model = Pedido
-        fields = '__all__'
-        widgets = {
-            'productos': forms.CheckboxSelectMultiple(),
-        }
+        fields = ('NombreC','ApellidosC', 'telefono','Correo','direccion','fecha')
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['fecha'].label = 'Fecha (A-M-D)'

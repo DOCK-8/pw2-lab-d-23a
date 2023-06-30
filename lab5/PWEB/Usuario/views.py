@@ -25,6 +25,7 @@ def login_U(request):
 
 def logout_U(request):
     logout(request)
+    Carrito.objects.all().delete()
     return redirect('Login')
 def regist_U(request):
     if request.method == "POST":
@@ -44,6 +45,7 @@ def Proforma(request):
         contrato = Pedidos(request.POST)
         if contrato.is_valid():
             contrato.save()
+            contrato.carrito = Carrito.objects.all()
     else:
         contrato=Pedidos()
     return render(request, 'Proforma.html',{"Ped":contrato,"productos":List_prod})
