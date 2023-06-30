@@ -6,7 +6,9 @@ BOCADITOS
 BOCADITOS
 {% endblock%}
 {% block content %}
-<h1>
-    BOCADITOS
-</h1>
+{% for producto in producs %}
+{% if producto.tipo.Tip == "Bocadito" %}
+<img src="{{producto.imagen.url}}" alt="{{producto.nombre}}" onclick="Open('{{producto.imagen.url}}','{{producto.nombre}}','{{producto.descripcion|linebreaksbr}}','{{producto.precio}}')">
+{% endif %}
+{% endfor %}
 {% endblock  %}

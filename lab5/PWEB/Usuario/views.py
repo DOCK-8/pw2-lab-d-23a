@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
+from django.db.models import Sum
 from Usuario.forms import Registro,Pedidos
 from Decoraciones.models import Carrito
 # Create your views here.
@@ -52,13 +53,14 @@ def agregar(request):
         descripcionC = request.POST.get('descripcion')
         precioC = request.POST.get('precio')
         urlC= request.POST.get('imagen_url')
-        print (urlC)
         Articulo= Carrito(nombre=nombreC, descripcion=descripcionC, precio=precioC, adquirido=True, rutaI=urlC)
         Articulo.save()
-        for a in Carrito.objects.all():
-            print (a.rutaI)
         return redirect ("Inicio")
-
+def borrar(request, numero):
+    articulo = Carrito.objects.get(id=numero)
+    articulo.delete()
+    return redirect("bolsa")
 def lista(request):
     listaArticulo=Carrito.objects.all()
-    return render(request, 'lista.html', {"productos":listaArticulo})
+    total = Carrito.objects.aggregate(Sum('precio'))['precio__sum'] or 0
+    return render(request, 'lista.html', {"productos":listaArticulo,"total":total})
