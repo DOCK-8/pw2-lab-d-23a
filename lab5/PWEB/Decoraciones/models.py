@@ -1,13 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
-class Producto (models.Model):
-    imagen=models.ImageField(null=True,blank=True,upload_to="img/")
-    nombre=models.CharField(max_length=25)
-    descripcion=models.TextField()
-    precio=models.IntegerField()
 class Pedido(models.Model):
     NombreC = models.CharField(null=True, max_length=50)
     ApellidosC = models.CharField(null=True, max_length=50)
@@ -15,5 +9,20 @@ class Pedido(models.Model):
     Correo = models.EmailField(max_length=254, default='')
     direccion=models.CharField(max_length=50)
     fecha=models.DateField()
-    productos = models.ManyToManyField(Producto)
 
+class Producto (models.Model):
+    nombre=models.CharField(max_length=25)
+    descripcion=models.TextField()
+    precio=models.CharField(max_length=25)
+
+    class Meta:
+        abstract = True
+
+class catalogo(Producto):
+    imagen=models.ImageField(null=True,blank=True,upload_to="img/")
+class Lista (Producto):
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, null=True)
+
+class Carrito (Producto):
+    adquirido = models.BooleanField()
+    rutaI = models.CharField(null=True, max_length=50000)

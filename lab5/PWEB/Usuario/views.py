@@ -2,11 +2,11 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 from Usuario.forms import Registro,Pedidos
-from Decoraciones.models import Producto
+from Decoraciones.models import Carrito
 # Create your views here.
 
 #Lista de productos.
-List_prod=Producto.objects.all()
+List_prod=Carrito.objects.all()
 
 def login_U(request):
     if request.method == "POST" :
@@ -46,3 +46,19 @@ def Proforma(request):
     else:
         contrato=Pedidos()
     return render(request, 'Proforma.html',{"Ped":contrato,"productos":List_prod})
+def agregar(request):
+    if request.method == "POST":
+        nombreC = request.POST.get('nombre')
+        descripcionC = request.POST.get('descripcion')
+        precioC = request.POST.get('precio')
+        urlC= request.POST.get('imagen_url')
+        print (urlC)
+        Articulo= Carrito(nombre=nombreC, descripcion=descripcionC, precio=precioC, adquirido=True, rutaI=urlC)
+        Articulo.save()
+        for a in Carrito.objects.all():
+            print (a.rutaI)
+        return redirect ("Inicio")
+
+def lista(request):
+    listaArticulo=Carrito.objects.all()
+    return render(request, 'lista.html', {"productos":listaArticulo})

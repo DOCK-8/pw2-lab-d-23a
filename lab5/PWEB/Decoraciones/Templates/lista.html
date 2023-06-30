@@ -1,0 +1,17 @@
+{% extends 'inicio.html' %}
+{% load static %}
+{% block  title%}
+CONOCER
+{% endblock  %}
+{% block sub %}
+CONTRATO </br> PROFORMA
+{% endblock%}
+{% block content %}
+{% for producto in productos %}
+<div>
+<p id="nombre">{{producto.nombre}}</p>
+<img src= {{producto.rutaI}} alt="{{producto.nombre}}">
+<p id="precio">{{producto.precio}}</p>
+</div>
+{% endfor %}
+{% endblock  %} 
