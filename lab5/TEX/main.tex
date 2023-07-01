@@ -177,22 +177,17 @@
         \item Instalar Vim en
         \begin{itemize}
             \item GNU/Linux
-            \begin{itemize}
                 \begin{lstlisting}
                     apt-get install vim
                 \end{lstlisting}
-            \end{itemize}
             \item MS Windows
             \begin{itemize}
                 \item Para descarga en sistemas MS Windows \url{https://www.vim.org/download.php}
             \end{itemize}
             \item MacOS
-            \begin{itemize}
                 \begin{lstlisting}
                     brew install macvim
                 \end{lstlisting}
-            \end{itemize}
-        \end{itemize}
         \item Git
         \begin{itemize}
             \item Git es un sistema de control de versiones creado por Linus Torvalds. Es eficiente, confiable.
@@ -200,11 +195,9 @@
         \item Instalar Git
         \begin{itemize}
             \item GNU/Linux
-            \begin{itemize}
                 \begin{lstlisting}
                 apt-get install git    
                 \end{lstlisting}
-            \end{itemize}
             \item MS Windows
             \begin{itemize}
                 \item Para descarga en sistemas MS Windows \url{https://git-scm.com/download/win}
@@ -233,9 +226,7 @@
             \begin{lstlisting}[language=bash,caption={Paquetes y herramientas de desarrollo más para instalar para garantizar que tengamos una configuración sólida para nuestro entorno de programación:}][H]
 		          sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
 	        \end{lstlisting}
-            \end{itemize}
             \item Configurar un entorno virtual:
-            \begin{itemize}
                 \item Los entornos virtuales permiten tener un espacio aislado en los proyectos Python
                 \item Garantizando que cada proyecto pueda tener su propio conjunto de dependencias que no interrumpirán a otros proyectos.
                 \item Manejando diferentes versiones de los paquetes. Esto es especialmente importante cuando se trabaja con paquetes de terceros.
@@ -417,9 +408,9 @@ def Decoraciones(request):
     \end{lstlisting}
 	\begin{itemize}
 	    \item \textbf{from Decoraciones.models import catalogo}.Importa el modelo catalogo desde el archivo models.py del directorio Decoraciones. Esto permite acceder a los objetos de la clase catalogo definida en ese modelo.
-        \item \textbf{list_producto=catalogo.objects.all()}, obtiene todos los objetos de la clase catalogo almacenados y los asigna a la variable \textbf{list_producto}. Esto devuelve una lista de todos los productos.
+        \item \textbf{$list_producto$=catalogo.objects.all()}, obtiene todos los objetos de la clase catalogo almacenados y los asigna a la variable \textbf{$list_producto$}. Esto devuelve una lista de todos los productos.
         \item \textbf{def Home(request)}, es una función que recibe un objeto request como parámetro. Esta función se utiliza para manejar el template \textbf{home.html}.
-        \item \textbf{return render(request,"home.html",{"producs":list_producto})}, renderiza la plantilla home.html y la devuelve como respuesta HTTP. Además, se pasa un diccionario como contexto a la plantilla, donde la clave "producs" es list_producto. Esto permite acceder a la lista de productos en la plantilla para mostrarlos.
+        \item \textbf{return render(request,"home.html",{"producs":$list_producto$})}, renderiza la plantilla home.html y la devuelve como respuesta HTTP. Además, se pasa un diccionario como contexto a la plantilla, donde la clave "producs" es $list_producto$. Esto permite acceder a la lista de productos en la plantilla para mostrarlos.
         \item Las funciones Bebidas, Bocaditos, Equipos y Decoraciones siguen la misma estructura que la función Home. Cada una maneja una solicitud específica para mostrar una página correspondiente a cada una de ellas.
     \end{itemize}
 	\begin{lstlisting}[language=python,caption={Decoraciones/urls.py}][H]
@@ -623,6 +614,5 @@ lab5/
 %\clearpage
 %\bibliographystyle{apalike}
 %\bibliographystyle{IEEEtranN}
-%\bibliography{bibliography}
-			
+%\bibliography{bibliography}			
 \end{document}
