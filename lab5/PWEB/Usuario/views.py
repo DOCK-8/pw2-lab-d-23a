@@ -25,7 +25,8 @@ def login_U(request):
 
 def logout_U(request):
     logout(request)
-    Carrito.objects.all().delete()
+    #Aun por terminar
+    #Carrito.objects.all().delete()
     return redirect('Login')
 def regist_U(request):
     if request.method == "POST":
