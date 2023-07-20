@@ -19,7 +19,7 @@ from rest_framework import routers, serializers, viewsets
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from Decoraciones.models import Tipo
+from Decoraciones.models import Tipo,Carrito,catalogo,Pedido
 
 class TipoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -30,9 +30,42 @@ class TipoSerializer(serializers.HyperlinkedModelSerializer):
 class TipoViewSet(viewsets.ModelViewSet):
     queryset = Tipo.objects.all()
     serializer_class = TipoSerializer
-    
+
+class CarritoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Carrito
+        fields = ['nombre','precio','rutaI']
+
+# ViewSets define the view behavior.
+class CarritoViewSet(viewsets.ModelViewSet):
+    queryset = Carrito.objects.all()
+    serializer_class = CarritoSerializer
+
+class CatalogoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = catalogo
+        fields = ['nombre','precio','imagen','tipo']
+
+# ViewSets define the view behavior.
+class CatalogoViewSet(viewsets.ModelViewSet):
+    queryset = catalogo.objects.all()
+    serializer_class = CatalogoSerializer
+
+class PedidoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Pedido
+        fields = ['NombreC','telefono','direccion','fecha']
+
+# ViewSets define the view behavior.
+class PedidoViewSet(viewsets.ModelViewSet):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
+
 router = routers.DefaultRouter()
 router.register(r'Tipo', TipoViewSet)
+router.register(r'Carrito', CarritoViewSet)
+router.register(r'Catalogo', CatalogoViewSet)
+router.register(r'Pedido', PedidoViewSet)
 
 urlpatterns = [
     path('rest/', include(router.urls)),
