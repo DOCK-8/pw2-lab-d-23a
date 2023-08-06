@@ -160,7 +160,7 @@
 | Carrito  | Carrito | Si | No | Ninguno | No |
 
 ##  Diagrama Entidad-Relación
-    ...
+    ![Diagrama](url_de_la_imagen)
 
 ##  Administración con Django
     Se muestran los pasos realizados para crear el Proyecto, la aplicación, creacion de modelos, migraciones y habilitación del panel de administración en Django.
