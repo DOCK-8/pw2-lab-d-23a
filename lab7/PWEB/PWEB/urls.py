@@ -15,11 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from rest_framework import routers, serializers, viewsets
 from django.urls import path,include
+from rest_framework import routers, serializers, viewsets
 from django.conf import settings
 from django.conf.urls.static import static
-from Decoraciones.models import Tipo,Carrito,catalogo,Pedido
+from Usuario.views import Login,logoutUsuario
+from django.contrib.auth.decorators import login_required
+'''
+from Decoraciones.models import Tipo,Carrito,catalogo
 
 class TipoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -65,13 +68,16 @@ router = routers.DefaultRouter()
 router.register(r'Tipo', TipoViewSet)
 router.register(r'Carrito', CarritoViewSet)
 router.register(r'Catalogo', CatalogoViewSet)
-router.register(r'Pedido', PedidoViewSet)
-
+#router.register(r'Pedido', PedidoViewSet)
+'''
 urlpatterns = [
-    path('rest/', include(router.urls)),
-    path('api-auth/',include('rest_framework.urls', namespace='rest_framework')),
+   # path('rest/', include(router.urls)),
+   # path('api-auth/',include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
-    path('', include('Decoraciones.urls')),
-    path('Usuario/', include('Usuario.urls')),
+    path('', include('Decoraciones.urls', namespace='Decoraciones' )),
+    path('Usuario/', include('Usuario.urls', namespace='usuario')),
     path('Usuario/', include('django.contrib.auth.urls')),
+    path('accounts/login/',Login.as_view(), name="login"),
+    path('logout/',login_required(logoutUsuario), name="logout"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

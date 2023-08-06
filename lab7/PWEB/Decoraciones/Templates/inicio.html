@@ -28,16 +28,16 @@
                 <li><a href="/Equipos/">Equipos</a></li>
                 <li><a href="/Decoraciones/">Decoraciones</a></li>
                 {% if not user.is_authenticated %}
-                <li><a href="/Usuario/Ingreso/">Acceder</a></li>
+                <li><a href="/accounts/login/">Acceder</a></li>
                 {% else %}
-                    {% if user.is_superuser %}
+                    {% if user.usuario_admin %}
                         <li><a href="/admin/"><i class="fas fa-user"></i>-ADMINISTRAR</a></li>
                         <li><a href="/admin/"><i class="fas fa-shopping-cart"></i>PEDIDOS</a></li>
-                        <li><a href="/Usuario/salida/"><i class="fas fa-power-off"></i></a></li>
+                        <li><a href="{% url 'logout' %}"><i class="fas fa-power-off"></i></a></li>
                     {% else %}
                         <li class="nav-item"><a class="nav-link" href="/Usuario/lista/"><i class="fas fa-user"></i>U</a></li>
-                        <li><a href="/Usuario/Contrato/">Contrato</a></li>
-                        <li><a href="/Usuario/salida/"><i class="fas fa-power-off"></i></a></li>
+                        <li><a href="{% url 'usuario:descargar_pdf'%}" id="btn-descargar">CONTRATAR</a></li>
+                        <li><a href="{% url 'logout' %}"><i class="fas fa-power-off"></i></a></li>
                     {% endif %}
                 {% endif %}
             </ul>
@@ -49,12 +49,16 @@
             <input type="hidden" name="nombre" id="nombre_input">
             <input type="hidden" name="descripcion" id="descripcion_input">
             <input type="hidden" name="precio" id="precio_input">
+            <input type="hidden" name="categoria" id="categoria">
             <section class="zoom" id="zoom">
                 <img src="" id="zImagen">
                 <div class="at" id="at">
                     <p id="nombre"></p>
                     <p id="descripcion"></p>
                     <p id="precio"></p>
+                    <p id="Abe"></p>
+                    <p>Cantidad:</p>
+                    <input type="number" id="cantidad" name="cantidad" required>
                     {% if not user.is_superuser and user.is_authenticated %}
                     <button type="submit"><i class="fas fa-shopping-cart" style="background-color:rgb(255, 115, 0);"></i></button>
                     {% endif %}
@@ -93,5 +97,9 @@
             </div>
         </footer>
         <script src="{% static 'Decoracions/js/index.js' %}"></script>
+        <script>
+            const descargarPDFURL = "/Usuario/descargar_pdf/";
+        </script>
+          
 </body>
 </html>

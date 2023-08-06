@@ -41,8 +41,13 @@ INSTALLED_APPS = [
     'Decoraciones',
     'Usuario',
     'rest_framework',
-]
-
+    'django_extensions',
+    'simple_history',
+    ]
+GRAPH_MODELS = {
+    'all_applications': True,
+    'graph_models': True,
+}
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -66,7 +71,7 @@ ROOT_URLCONF = 'PWEB.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/francis/Documentos/pweb/pw2-lab-d-23a/lab5/PWEB/Decoraciones/Templates'],
+        'DIRS': ['/home/francis/Documentos/pweb/pw2-lab-d-23a/lab7/PWEB/Decoraciones/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,7 +128,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
@@ -138,3 +142,4 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'Usuario.Usuario'
