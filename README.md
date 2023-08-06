@@ -160,7 +160,7 @@
 | Carrito  | Carrito | Si | No | Ninguno | No |
 
 ##  Diagrama Entidad-Relación
-    ![Diagrama]([url_de_la_imagen](https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/PWEB/erd.png))
+![Diagrama]([url_de_la_imagen](https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/PWEB/erd.png))
 
 ##  Administración con Django
     Se muestran los pasos realizados para crear el Proyecto, la aplicación, creacion de modelos, migraciones y habilitación del panel de administración en Django.
