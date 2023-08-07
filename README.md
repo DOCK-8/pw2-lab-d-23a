@@ -388,7 +388,7 @@ Producción de un PlayList en Youtube explicando cada una de los requerimientos.
 Video 01 - Sistema - Requisitos.
 Video 02 - Modelo de datos - DD - DER.
 etc…
-
+link del playList: https://www.youtube.com/watch?v=5P6Adob8sYM&list=PLYz6dBpEFqP9k5GqhXk4-BNQGd-wQt4Z3
 
 ## REFERENCIAS
 -   
