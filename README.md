@@ -163,61 +163,232 @@
 ![Diagrama Entidad-Relación](https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/PWEB/erd.png)
 
 ##  Administración con Django
-    Se muestran los pasos realizados para crear el Proyecto, la aplicación, creacion de modelos, migraciones y habilitación del panel de administración en Django.
-    ...
+Instalacion:
+ sudo apt-get install -y python3-pip
+ sudo apt install -y python3-venv
+Creamos el entorno:
+ virtualenv -p python3 .
+ source ../bin/activate
+Instalacion con PIP:
+ pip install Django
+ pip install pillow
+ pip install djangorestframework
+ pip install markdown
+ pip install django-filter
+Creacion del projecto-django:
+ django-admin startproject PWEB
+Creacion de la app Decoraciones y Usuario:
+ cd PWEB
+ python manage.py startapp Decoraciones
+ python manage.py startapp Usuario
+Configurando el Projecto:
+ INSTALLED_APPS = [
+     'Usuario',
+    'Decoraciones',
+    'rest_framework',
+                  ]
+                    
+ REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+                        ]
+                }
+Desarrollando models -> Decoraciones/model.py:
+
+    class Fiesta(models.Model):
+        ...
+    class Galeria(models.Model):
+        ...
+    class Tipo(models.Model):
+        ...
+    class Distrito(models.Model):
+        ...
+    class Asociaciones (models.Model):
+        ...
+    class Producto(models.Model):
+        ...
+    class catalogo(Producto):
+        ...
+    class Carrito(Producto):
+        ...
+    class Pedido(models.Model):
+        ...
+Desarrollando models -> Usuario/model.py:
+
+    class UsuarioManager(BaseUserManager):
+        ...
+    class Usuario (AbstractBaseUser):    
+        ...
+Ejecucion:
+![Diagrama Entidad-Relación](https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/PWEB/Img/Captura%20desde%202023-08-06%2019-21-43.png)
+
+Desarrollo de urls -> Decoraciones:
+from django.urls import path
+from Decoraciones import views
+app_name = 'Decoraciones'
+urlpatterns = [
+    path('', views.Home, name="Inicio"),
+    path('Bebidas/', views.Bebidas, name="Bebidas"),
+    path('Bocaditos/', views.Bocaditos, name="Bocaditos"),
+    path('Equipos/', views.Equipos, name="Equipos"),
+    path('Decoraciones/', views.Decoraciones, name="Decoraciones"),
+    path('Historial/',views.Historial, name="Historial")
+]
+Desarrollo de views -> Decoraciones:
+from django.shortcuts import render
+from Decoraciones.models import catalogo
+
+def Historial(request):
+    histories = catalogo.historial.all()
+    return render(request, "Historial.html", {'History': histories})
+# Lista de elementos
+#Pagina de Inicio
+def Home(request):
+    list_producto=catalogo.objects.all()
+    return render(request,"home.html",{"producs":list_producto})
+def Bebidas(request):
+    list_producto=catalogo.objects.all()
+    return render(request,"Bbs.html",{"producs":list_producto})
+def Bocaditos(request):
+    list_producto=catalogo.objects.all()
+    return render(request,"Bts.html",{"producs":list_producto})
+def Equipos(request):
+    list_producto=catalogo.objects.all()
+    return render(request,"Eps.html",{"producs":list_producto})
+def Decoraciones(request):
+    list_producto=catalogo.objects.all()
+    return render(request,"Dec.html",{"producs":list_producto})
+Desarrollo de urls -> PWEB:
+from django.contrib import admin
+from django.urls import path,include
+from rest_framework import routers, serializers, viewsets
+from django.conf import settings
+from django.conf.urls.static import static
+from Usuario.views import Login,logoutUsuario
+from django.contrib.auth.decorators import login_required
+from Decoraciones.models import Tipo,Carrito,catalogo
+
+class TipoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Tipo
+        fields = ['Tip']
+
+# ViewSets define the view behavior.
+class TipoViewSet(viewsets.ModelViewSet):
+    queryset = Tipo.objects.all()
+    serializer_class = TipoSerializer
+
+class CarritoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Carrito
+        fields = ['nombre','precio','rutaI']
+
+ViewSets define the view behavior.
+class CarritoViewSet(viewsets.ModelViewSet):
+    queryset = Carrito.objects.all()
+    serializer_class = CarritoSerializer
+
+class CatalogoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = catalogo
+        fields = ['nombre','precio','imagen','tipo']
+
+ViewSets define the view behavior.
+class CatalogoViewSet(viewsets.ModelViewSet):
+    queryset = catalogo.objects.all()
+    serializer_class = CatalogoSerializer
+
+class PedidoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Pedido
+        fields = ['NombreC','telefono','direccion','fecha']
+
+ViewSets define the view behavior.
+class PedidoViewSet(viewsets.ModelViewSet):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
+
+router = routers.DefaultRouter()
+router.register(r'Tipo', TipoViewSet)
+router.register(r'Carrito', CarritoViewSet)
+router.register(r'Catalogo', CatalogoViewSet)
+#router.register(r'Pedido', PedidoViewSet)
+urlpatterns = [
+    path('rest/', include(router.urls)),
+    path('api-auth/',include('rest_framework.urls', namespace='rest_framework')),
+    path('admin/', admin.site.urls),
+    path('', include('Decoraciones.urls', namespace='Decoraciones' )),
+    path('Usuario/', include('Usuario.urls', namespace='usuario')),
+    path('Usuario/', include('django.contrib.auth.urls')),
+    path('accounts/login/',Login.as_view(), name="login"),
+    path('logout/',login_required(logoutUsuario), name="logout"),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+Desarrollo de urls -> Usuario:
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView,logout_then_login
+from django.urls import path
+from . import views
+
+app_name = 'usuario'
+
+urlpatterns = [
+    path('descargar_pdf/', views.download_pdf, name='descargar_pdf'),
+    path('Registro/', views.regist_U.as_view(),name = "regist_u"),
+    path('Contrato/', views.Proforma, name="contrato"),
+    path('Agregar/', views.agregar, name="carrito"),
+    path('lista/', views.lista, name="bolsa"),
+    path('Borrar/<int:numero>/', views.borrar, name='borrar'),
+    path('Usuario/deshacer/<int:history_id>/', views.deshacer_cambio, name='deshacer_cambio')
+    ]
+
+Desarrollo de views -> Usuario:
+...mucho codigo...
 
 ##  Plantillas Bootstrap
-    Se seleccionó la siguiente plantilla para el usuario final (No administrador).
-
-    Demo online:
-    URL: ...
-
-    Se muestran las actividades realizadas para adecuación de plantillas, vistas, formularios en Django.
-    ...
-
+Se presenta la pagina de inicio, para ver el catalogo de productos
+![Diagrama Entidad-Relación](https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/PWEB/Captura%20desde%202023-08-06%2019-40-35.png)
+Login del usuario
+![Diagrama Entidad-Relación](https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/PWEB/Captura%20desde%202023-08-06%2019-40-47.png)
+Solamente se utilizo una plantilla para avizos de error durante, el login
+![Diagrama Entidad-Relación](https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/PWEB/Captura%20desde%202023-08-06%2019-40-53.png)
 ##  CRUD - Core Business - Clientes finales
-    El núcleo de negocio del sistema de inscripciones tiene valor de aceptación para los cliente finales (alumnos) radica en realizar el proceso de inscripción propiamente, que empieza desde que:
-    1. El alumno inicia sesión.
-    2. El alumno selecciona el o los cursos donde desea realizar una inscripción.
-    3. El alumno selecciona el grupo de laboatorio donde desea incribirse.
-    4. El alumno puede tener la posibilidad de anular una incripción por varias razones: cambio de grupo, corregir error, etc.
-    5. El alumno puede ver el consolidado de sus inscripciones.
+    El núcleo de negocio del sistema de Proformas tiene valor de aceptación para los cliente finales (Personas Externas) radica en realizar el proceso de agregar al carrito propiamente, que empieza desde que:
+    1. El Cliente inicia sesión, para tener acceso al carrito.
+    2. El alumno selecciona el o los producto en la ventana Home.
+    4. El alumno puede tener la posibilidad de quitar un producto por varias razones: cambio de producto, corregir error, etc.
+    5. El alumno puede ver el total de su carrito, mediante la pestaña de su perfil.
+    5. El alumno puede Descargar su contrato en forma de pdf.
     6. El alumno cierra sesión.
 
     Todas y cada una de estas pantallas debe funcionar en la plantilla bootstrap.
     A continuación se muestran las actividades realizadas para su construcción:
-    ...
+Video
 
 ##  Servicios mediante una API RESTful
     Se ha creado una aplicación que pondra a disposición cierta información para ser consumida por otros clientes HTTP.
-    1. GET : Con el método get se devolverá la lista de cursos, grupos y horarios establecidos para que el alumno sobre todo vea esta información en cualquier otro medio. En formato JSON. 
-    2. POST : Con este método se enviara el código del alumno y se devolvera sus inscripciones. En formato JSON.
+    1. GET : Con el método get se devolverá la lista de productos de un catalogo, Tipos y Pedidos establecidos para que el administrador sea capaz de ver estas listas
+    2. POST : Con este método se enviara el productos, tipos.
     
     Ejemplo: Prueba en Página web, aplicación móvil, PDF, etc.
     Se especifican los pasos para crear el servicio RestFul
     ...
 
 ##  Operaciones asíncronas AJAX
-    Se propone el uso de AJAX para realizar la asignación de carga académica a los docentes que estan registrados. Esta operación la realizará el usuario operador encargado por el DAISI.
+    Se propone el uso de AJAX para realizar descarga de un pdf, sobre el carrito que este posee
     Se muestran los pasos necesarios a realizar.
-    ....
+    video
 
 ##  Investigación: Email, Upload.
-    - Email: Se utilizará la funcionalidad del uso de envío de correos electrónicos cuando el proceso de inscripciones culmine y al profesor le llegue la lista de alumnos inscritos en sus grupos a cargo.
-    - Upload: Se utilizará esta funcionalidad para subír, archivos CSV para importar y exportar información en el sistema.
-    Se muestran los pasos realizados para su funcionamiento correcto.
-    ...
-
-Github del proyecto:
-
-URL en Heroku:
+    No se logro
+Github del proyecto:https://github.com/WillianAyamamani/pw2-lab-d-23a/blob/main/lab7/
 
 URL Playlist YouTube.
 Producción de un PlayList en Youtube explicando cada una de los requerimientos.
 Video 01 - Sistema - Requisitos.
 Video 02 - Modelo de datos - DD - DER.
 etc…
-
+link del playList: https://www.youtube.com/watch?v=5P6Adob8sYM&list=PLYz6dBpEFqP9k5GqhXk4-BNQGd-wQt4Z3
 
 ## REFERENCIAS
 -   
