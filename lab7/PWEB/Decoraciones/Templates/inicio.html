@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap" rel="stylesheet">
@@ -22,16 +23,17 @@
         </header> 
         <nav>
             <ul id="barra">
-                <li><a href="/">Home</a></li>
+                <li><a href="/"> <i class="fas fa-home"></i></a></li>
                 <li><a href="/Bebidas/">Bebidas</a></li>
                 <li><a href="/Bocaditos/">Bocaditos</a></li>
                 <li><a href="/Equipos/">Equipos</a></li>
-                <li><a href="/Decoraciones/">Decoraciones</a></li>
+                <li><a href="/Decoraciones/">Deco</a></li>
                 {% if not user.is_authenticated %}
                 <li><a href="/accounts/login/">Acceder</a></li>
                 {% else %}
                     {% if user.usuario_admin %}
                         <li><a href="/admin/"><i class="fas fa-user"></i>-ADMINISTRAR</a></li>
+                        <li><a href="{% url 'Decoraciones:Historial'%}"> H</a></li>
                         <li><a href="/admin/"><i class="fas fa-shopping-cart"></i>PEDIDOS</a></li>
                         <li><a href="{% url 'logout' %}"><i class="fas fa-power-off"></i></a></li>
                     {% else %}
@@ -59,7 +61,7 @@
                     <p id="Abe"></p>
                     <p>Cantidad:</p>
                     <input type="number" id="cantidad" name="cantidad" required>
-                    {% if not user.is_superuser and user.is_authenticated %}
+                    {% if not user.usuario_admin and user.is_authenticated %}
                     <button type="submit"><i class="fas fa-shopping-cart" style="background-color:rgb(255, 115, 0);"></i></button>
                     {% endif %}
                 </div>

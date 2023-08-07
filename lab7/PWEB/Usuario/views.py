@@ -48,7 +48,6 @@ def deshacer_cambio(request, history_id):
             nombre=producto.nombre,
             descripcion=producto.descripcion,
             precio=producto.precio,
-            Categoria=producto.Categoria,
             Estado=producto.Estado,
             imagen=producto.imagen,
             tipo=producto.tipo
@@ -61,9 +60,9 @@ def deshacer_cambio(request, history_id):
         objeto_actual.nombre = producto.nombre
         objeto_actual.descripcion = producto.descripcion
         objeto_actual.precio = producto.precio
-        objeto_actual.Categoria = producto.Categoria
         objeto_actual.Estado = producto.Estado
-        objeto_actual.imagen = producto.imagen
+        print(producto.precio)
+        objeto_actual.imagen.Imagen = producto.imagen.Imagen
         objeto_actual.tipo = producto.tipo
         objeto_actual.save()
         # Eliminar el objeto historial
@@ -72,7 +71,7 @@ def deshacer_cambio(request, history_id):
         objeto_guardado = catalogo.objects.get(id=producto.id)
         objeto_guardado.delete()
     objeto_historial.delete()
-    return redirect('Historial')
+    return redirect('Decoraciones:Historial')
 
 
 # Create your views here.

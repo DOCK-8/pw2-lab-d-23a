@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from Usuario.views import Login,logoutUsuario
 from django.contrib.auth.decorators import login_required
-'''
+
 from Decoraciones.models import Tipo,Carrito,catalogo
 
 class TipoSerializer(serializers.HyperlinkedModelSerializer):
@@ -54,25 +54,25 @@ class CatalogoViewSet(viewsets.ModelViewSet):
     queryset = catalogo.objects.all()
     serializer_class = CatalogoSerializer
 
-class PedidoSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Pedido
-        fields = ['NombreC','telefono','direccion','fecha']
+#class PedidoSerializer(serializers.HyperlinkedModelSerializer):
+#    class Meta:
+#        model = Pedido
+#        fields = ['NombreC','telefono','direccion','fecha']
 
 # ViewSets define the view behavior.
-class PedidoViewSet(viewsets.ModelViewSet):
-    queryset = Pedido.objects.all()
-    serializer_class = PedidoSerializer
+#class PedidoViewSet(viewsets.ModelViewSet):
+#    queryset = Pedido.objects.all()
+#    serializer_class = PedidoSerializer
 
 router = routers.DefaultRouter()
 router.register(r'Tipo', TipoViewSet)
 router.register(r'Carrito', CarritoViewSet)
 router.register(r'Catalogo', CatalogoViewSet)
 #router.register(r'Pedido', PedidoViewSet)
-'''
+
 urlpatterns = [
-   # path('rest/', include(router.urls)),
-   # path('api-auth/',include('rest_framework.urls', namespace='rest_framework')),
+    path('rest/', include(router.urls)),
+    path('api-auth/',include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('', include('Decoraciones.urls', namespace='Decoraciones' )),
     path('Usuario/', include('Usuario.urls', namespace='usuario')),
